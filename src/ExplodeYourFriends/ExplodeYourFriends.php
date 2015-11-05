@@ -32,7 +32,7 @@ class ExplodeYourFriends extends PluginBase implements Listener{
                 
                 case "explode":
 				if(count($args) !== 1){
-					$sender->sendMessage(TextFormat::RED . "Usage: " . $command->getUsage());
+					$sender->sendMessage("§cUsage: " . $command->getUsage());
 					return true;
 				}
 				
