@@ -1,0 +1,25 @@
+name: ExplodeYourFriends
+version: 1.0.0
+api: [1.0.0]
+author: Calrizer
+description: Transfers players to different servers.
+main: ExplodeYourFriends\ExplodeYourFriends
+
+commands:
+ explode:
+  description: "Explodes a player"
+  usage: "/explode <player>"
+  permission: "ExplodeYourFriends.command.srank"
+
+permissions:
+ ExplodeYourFriends:
+  default: op
+  description: "Allows using all the ExplodeYourFriends functionality."
+  children:
+   ExplodeYourFriends.command:
+    default: op
+    description: "Allows using all the ExplodeYourFriends commands."
+    children:
+     ExplodeYourFriends.command.explode:
+      default: op
+      description: "Allows exploding players."
