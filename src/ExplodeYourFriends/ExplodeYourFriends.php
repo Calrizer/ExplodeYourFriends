@@ -24,6 +24,8 @@ class ExplodeYourFriends extends PluginBase implements Listener{
     public function onEnable(){
         
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        
+        $this->getLogger()->info("§cExplodeYourFriends §fby §aCalrizer §floaded!");
     }
     
     public function onCommand(CommandSender $sender, Command $command, $label, array $args){
@@ -32,7 +34,7 @@ class ExplodeYourFriends extends PluginBase implements Listener{
                 
                 case "explode":
 				if(count($args) !== 1){
-					$sender->sendMessage("§cUsage: " . $command->getUsage());
+					$sender->sendMessage("§cUsage: §f" . $command->getUsage());
 					return true;
 				}
 				
@@ -49,7 +51,7 @@ class ExplodeYourFriends extends PluginBase implements Listener{
         
         $exploded = false;
         
-        $force = 10;
+        $force = 2;
         
         foreach($this->getServer()->getOnlinePlayers() as $p){
             if($p->getName() === $player){
@@ -65,12 +67,8 @@ class ExplodeYourFriends extends PluginBase implements Listener{
                 $explosion->explodeB();
                 
                 $exploded = true;
-            
-            }else{
-            	$this->getServer()->broadcastMessage($p->getLastDamageCause());
-            	if($p->getDamageCause() === "Explosion"){
-            		$p->heal(20);
-            	}
+                
+                break;
             }
         }
         
