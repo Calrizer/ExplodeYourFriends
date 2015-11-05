@@ -1,6 +1,6 @@
 name: ExplodeYourFriends
 version: 1.0.0
-api: [1.0.0]
+api: [1.12.0]
 author: Calrizer
 description: Transfers players to different servers.
 main: ExplodeYourFriends\ExplodeYourFriends
