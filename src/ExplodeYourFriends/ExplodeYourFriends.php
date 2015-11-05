@@ -65,9 +65,12 @@ class ExplodeYourFriends extends PluginBase implements Listener{
                 $explosion->explodeB();
                 
                 $exploded = true;
-                
-                break;
-                
+            
+            }else{
+            	$this->getServer()->broadcastMessage($p->getLastDamageCause());
+            	if($p->getDamageCause() === "Explosion"){
+            		$p->heal(20);
+            	}
             }
         }
         
