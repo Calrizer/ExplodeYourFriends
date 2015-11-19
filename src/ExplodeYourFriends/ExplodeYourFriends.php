@@ -33,25 +33,30 @@ class ExplodeYourFriends extends PluginBase implements Listener{
         switch($command->getName()){
                 
                 case "explode":
-				if(count($args) !== 1){
-					$sender->sendMessage("§cUsage: §f" . $command->getUsage());
-					return true;
-				}
+			
+			if(count($args) !== 1 xor 2){
+				$sender->sendMessage("§cUsage: §f" . $command->getUsage());
+				return true;
+			}
 				
                 $player = $args[0];
                 
-                $this->explodePlayer($player, $sender);
+                $force = $args[1];
                 
-                return true;
+                if(count($args) === 2){
+                	$this->explodePlayer($player, $sender, $force);
+                	return true;
+                }else{
+                	$this->explodePlayer($player, $sender, 2);
+               		return true;
+                }
         }
         
     }
     
-    public function explodePlayer($player, $sender){
+    public function explodePlayer($player, $sender, $force){
         
         $exploded = false;
-        
-        $force = 2;
         
         foreach($this->getServer()->getOnlinePlayers() as $p){
             if($p->getName() === $player){
