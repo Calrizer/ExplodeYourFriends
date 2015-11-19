@@ -39,16 +39,25 @@ class ExplodeYourFriends extends PluginBase implements Listener{
 				return true;
 			}
 				
-                $player = $args[0];
+                	$player = $args[0];
                 
-                $force = $args[1];
+                	$force = $args[1];
                 
-                if(count($args) === 2){
-                	$this->explodePlayer($player, $sender, $force);
-                	return true;
-                }else{
-                	$this->explodePlayer($player, $sender, 2);
-               		return true;
+                	if($force > 20){
+                		$sender->sendMessage("§cForce too strong!");
+                		return true;
+                	}else if($force < 1){
+                		$sender->sendMessage("§cForce too weak!");
+                		return true;
+                	}
+                
+                	if(count($args) === 2){
+                		$this->explodePlayer($player, $sender, $force);
+                		return true;
+                	}else{
+                		$this->explodePlayer($player, $sender, 2);
+               			return true;
+                	}
                 }
         }
         
