@@ -34,34 +34,51 @@ class ExplodeYourFriends extends PluginBase implements Listener{
                 
                 case "explode":
 			
-			if(count($args) !== 1 xor 2){
-				$sender->sendMessage("§cUsage: §f" . $command->getUsage());
-				return true;
-			}
-				
-                	$player = $args[0];
+                    if(count($args) === 1){
+                        
+                         $player = $args[0];
+                         
+                         $this->explodePlayer($player, $sender, 2);
+                         
+                         return true;
+                     
+                    }elseif(count($args) === 2){
+                        
+                        $player = $args[0];
                 
-                	$force = $args[1];
+                	    $force = (int) $args[1];
                 
-                	if($force > 20){
-                		$sender->sendMessage("§cForce too strong!");
-                		return true;
-                	}else if($force < 1){
-                		$sender->sendMessage("§cForce too weak!");
-                		return true;
-                	}
+                        $this->getServer()->broadcastMessage($force);
                 
-                	if(count($args) === 2){
-                		$this->explodePlayer($player, $sender, $force);
-                		return true;
-                	}else{
-                		$this->explodePlayer($player, $sender, 2);
-               			return true;
-                	}
-                }
-        }
-        
+                	    if($force > 20){
+                		  
+                            $sender->sendMessage("§cForce too strong!");
+                		  
+                            return true;
+                            
+                	    }else if($force < 1){
+                		  
+                            $sender->sendMessage("§cForce too weak!");
+                		  
+                            return true;
+                            
+                	    }else{
+                           
+                            $this->explodePlayer($player, $sender, $force);
+                           
+                            return true;
+                            
+                        }
+                     
+                    }else{
+                         
+                         $sender->sendMessage("§cUsage: §f" . $command->getUsage());
+				         
+                         return true;
+                    }   	
+            }
     }
+        
     
     public function explodePlayer($player, $sender, $force){
         
