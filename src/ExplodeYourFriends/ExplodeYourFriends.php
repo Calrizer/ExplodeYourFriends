@@ -44,11 +44,9 @@ class ExplodeYourFriends extends PluginBase implements Listener{
                      
                     }elseif(count($args) === 2){
                         
-                        $player = $args[0];
+                            $player = $args[0];
                 
                 	    $force = (int) $args[1];
-                
-                        $this->getServer()->broadcastMessage($force);
                 
                 	    if($force > 20){
                 		  
