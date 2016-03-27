@@ -7,9 +7,9 @@ Use "/explode [player] [force]" to explode a given player!
 
 Use the command /explode as an op to blow up given players.
 
-NEW!: Use "/explode [player] [force]" to change the force of the explosion. Force is a number between 1-10.
+NEW!: Use "/explode [player] [force]" to change the force of the explosion. Force is a number between 1-20.
 
-Trust me you'd need a really good server to go over 10!
+Trust me you'd need a really good server to go over 20!
 
 ##Planned Features:##
 
